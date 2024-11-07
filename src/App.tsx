@@ -66,40 +66,44 @@ function App() {
   };
 
   return (
-    <main className="flex justify-center items-center h-screen bg-gradient-to-br from-yellow-700 via-yellow-400 to-yellow-200">
-      <div className="space-y-3">
-        <div className='flex flex-col'>
+    <main className="flex justify-center items-center  h-screen bg-gradient-to-br from-yellow-700 via-yellow-400 to-yellow-200">
+      <div className="flex flex-col gap-10">
+        <div className='flex flex-row gap-5 justify-center items-center'>
           <div>
-            <label htmlFor="topCount">Count:</label>
+            <label htmlFor="topCount" className="text-white font-semibold">Count:</label>
             <input
               id="topCount"
               type="number"
               value={topCount}
               onChange={(e) => setTopCount(Number(e.target.value))}
-              className="border p-2"
+              min={0}
+              className="w-20 rounded-full py-2 px-4 text-xl border-2 border-yellow-500 bg-white text-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             />
           </div>
           <div>
-            <label htmlFor="topValue">top:</label>
+            <label htmlFor="topValue" className="text-white font-semibold">Top:</label>
             <input
               id="topValue"
               type="number"
               value={topValue}
               onChange={handleTopValueChange}
-              className="border p-2"
+              min={0}
+              className="w-20 rounded-full py-2 px-4 text-xl border-2 border-yellow-500 bg-white text-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             />
           </div>
           <div>
-            <label htmlFor="bottomValue">bottom:</label>
+            <label htmlFor="bottomValue" className="text-white font-semibold">Bottom:</label>
             <input
               id="bottomValue"
               type="number"
               value={bottomValue}
               onChange={handleBottomValueChange}
-              className="border p-2"
+              min={0}
+              className="w-20 rounded-full py-2 px-4 text-xl border-2 border-yellow-500 bg-white text-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             />
           </div>
         </div>
+
 
         <div className="flex justify-center items-center space-x-0">
           {config.map((blockConfig, index) => (
