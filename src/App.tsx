@@ -7,6 +7,11 @@ function App() {
   const [topValue, setTopValue] = useState<number>(0);
   const [bottomValue, setBottomValue] = useState<number>(0);
   const [config, setConfig] = useState<{ top: number[], bottom: number[] }[]>([]);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   const startConfig = [
     {
@@ -66,8 +71,15 @@ function App() {
   };
 
   return (
-    <main className="flex justify-center items-center  h-screen bg-gradient-to-br from-yellow-700 via-yellow-400 to-yellow-200">
-      <div className="flex flex-col gap-10">
+    <main className={`flex justify-center items-center h-screen bg-gradient-to-br ${isDarkMode ? 'from-green-300 via-green-200 to-green-100' : 'from-yellow-400 via-yellow-300 to-yellow-200'}`}>
+      <div className="flex flex-col justify-center items-center gap-10">
+        <button
+          onClick={toggleTheme}
+          className={`p-2 w-24 rounded-full mb-4 ${isDarkMode ? 'bg-teal-500 text-white' : 'bg-yellow-800 text-white'}`}
+        >
+          Change
+        </button>
+
         <div className='flex flex-row gap-5 justify-center items-center'>
           <div>
             <label htmlFor="topCount" className="text-white font-semibold">Count:</label>
@@ -77,7 +89,8 @@ function App() {
               value={topCount}
               onChange={(e) => setTopCount(Number(e.target.value))}
               min={0}
-              className="w-20 rounded-full py-2 px-4 text-xl border-2 border-yellow-500 bg-white text-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className={`w-20 rounded-full py-2 px-4 text-xl border-2 ${isDarkMode ? 'border-gray-500' : 'border-yellow-500'} bg-white text-yellow-700 focus:outline-none focus:ring-2 ${isDarkMode ? 'focus:ring-gray-400' : 'focus:ring-yellow-400'}`}
+
             />
           </div>
           <div>
@@ -88,7 +101,8 @@ function App() {
               value={topValue}
               onChange={handleTopValueChange}
               min={0}
-              className="w-20 rounded-full py-2 px-4 text-xl border-2 border-yellow-500 bg-white text-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className={`w-20 rounded-full py-2 px-4 text-xl border-2 ${isDarkMode ? 'border-gray-500' : 'border-yellow-500'} bg-white text-yellow-700 focus:outline-none focus:ring-2 ${isDarkMode ? 'focus:ring-gray-400' : 'focus:ring-yellow-400'}`}
+
             />
           </div>
           <div>
@@ -99,29 +113,38 @@ function App() {
               value={bottomValue}
               onChange={handleBottomValueChange}
               min={0}
-              className="w-20 rounded-full py-2 px-4 text-xl border-2 border-yellow-500 bg-white text-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className={`w-20 rounded-full py-2 px-4 text-xl border-2 ${isDarkMode ? 'border-gray-500' : 'border-yellow-500'} bg-white text-yellow-700 focus:outline-none focus:ring-2 ${isDarkMode ? 'focus:ring-gray-400' : 'focus:ring-yellow-400'}`}
+
             />
           </div>
         </div>
 
-
         <div className="flex justify-center items-center space-x-0">
           {config.map((blockConfig, index) => (
-            <div key={index} className="py-5 w-[100px] h-[400px] bg-[url('/images/Frame1.png')] bg-cover bg-center flex flex-col justify-between items-center">
-              <UpBlock />
+            <div key={index} className="py-5 w-[100px] h-[400px] flex flex-col justify-between items-center duration-300" style={{
+              backgroundImage: `url('/images/${isDarkMode ? 'Frame2.png' : 'Frame1.png'}')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}>
+              <UpBlock isDarkMode={isDarkMode} />
               {/* down */}
               <div className="flex flex-col space-y-1 h-[68%] justify-between">
                 <div className='flex flex-col space-y-1'>
                   {blockConfig.top.map((_, i) => (
                     <div
                       key={`top-${i}`}
-                      className="w-[66px] h-[31px] bg-[url('/images/Vector1.png')]"
+                      className={`w-[66px] h-[31px] duration-300`}
+                      style={{
+                        backgroundImage: `url('/images/${isDarkMode ? 'Vector2.png' : 'Vector1.png'}')`,
+                      }}
                     ></div>
                   ))}
                 </div>
                 <div className='flex flex-col space-y-1'>
                   {blockConfig.bottom.map((_, i) => (
-                    <div key={`bottom-${i}`} className="w-[66px] h-[31px] bg-[url('/images/Vector1.png')]"></div>
+                    <div key={`bottom-${i}`} className="w-[66px] h-[31px]  duration-300" style={{
+                      backgroundImage: `url('/images/${isDarkMode ? 'Vector2.png' : 'Vector1.png'}')`,
+                    }}></div>
                   ))}
                 </div>
               </div>
