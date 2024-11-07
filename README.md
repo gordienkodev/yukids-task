@@ -1,50 +1,73 @@
-# React + TypeScript + Vite
+# SPA Abacus Bones
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ The abacus should support dynamic skin changes for both the beads and the frame, with customizable colors. The length of the abacus should be adjustable, allowing for a variable number of rods, and the number of beads on each rod should also be customizable. The bead count for the upper and lower sections of each rod can be different, and the program should reflect these changes dynamically. The entire implementation should be fully typed using TypeScript for better type safety and maintainability.
+ 
+Deploy: 
 
-Currently, two official plugins are available:
+## Author
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Pavel Gordienko](https://github.com/guz86)
 
-## Expanding the ESLint configuration
+## Setup and Running
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Use `node 22.x` or higher.
+- Clone this repo: `$ git clone [https://github.com/guz86/yukids-task.git)`.
+- Install dependencies: `$ npm install`.
+- Start server: `$ npm run dev`.
+- Now you can see web application to the address: `http://localhost:5173/`.
 
-- Configure the top-level `parserOptions` property like this:
+### Build
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Builds the app for production to the build folder. It correctly bundles React in production mode and optimizes the build for the best performance.
+
+```bash
+npm run build
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Stack
+- React
+- Typescript
+- Vite
+- tailwindcss
+ 
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Folder structure
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- components
+
+## Screenshots
+
+![image](https://github.com/user-attachments/assets/ba37e3da-ebcf-41f4-9e05-d5733df7d440)
+
+![image](https://github.com/user-attachments/assets/e6a0a4cb-90e8-4c0f-96f9-27589c5923d3)
+
+
+Задача:
+Сверстать рамку и косточки абакуса (счеты), внешний вид абакуса (изображения косточек и рамок после описания задачи):
+
+![image](https://github.com/user-attachments/assets/7b78a049-8236-4470-9933-3be99a5dc659)
+
+
+Требование по задаче:
+1) скин косточки должен быть сменный.
+Это только наглядный пример (сменный скин косточки):
+2) скин рамки должен быть сменный.
+Это только наглядный пример (сменный скин рамки):
+3) Длина абакуса сменная (может быть произвольная).
+Это только наглядный пример (короткий абакус):
+4) Количество косточек на одном стержне может быть разным (количество  может быть произвольным).
+
+Требование по выполнению:
+
+Сверстать с использованием библиотеки reactjs
+Смена скинов должна выполняться динамически, например при выборе нужного цвета
+Длина абакуса и количества косточек должна меняться динамически, при указании количества стержней или количества косточек сверху и снизу от среднего разделителя.
+Весь код необходимо покрыть типами используя typescript
+
+Результат :
+	Можно в любом формате. (git, codesanbox, html файл)
+Материалы по ссылке: https://drive.google.com/file/d/1RooBwpfZqCvs0abw3YhyWgL1CoZb2BuV/view?usp=sharing
+
+
+
+
