@@ -6,7 +6,7 @@ Deploy:
 
 ## Author
 
-- [Pavel Gordienko](https://github.com/guz86)
+- [Pavel Gordienko](https://github.com/gordienkodev)
 
 ## Setup and Running
 
